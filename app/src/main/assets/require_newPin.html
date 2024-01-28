@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+  <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+  <link rel="stylesheet" href="./src/css/login.css">
+  <script src="./src/js/backgroundEngine.js"></script>
+  <script src="./src/js/debug-commands.js"></script>
+  <script src="./src/mdl/mdl-script.js"></script>
+  <script src="./src/js/url_action.js"></script>
+  <script src="./src/js/analytics.js"></script>
+  <script src="./src/js/check.js"></script>
+</head>
+
+<body onload="check_if_auth_is_valid();">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="nth mdl-layout-title">
+          PIN Ändern
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+          <i class="material-icons">
+            lock
+          </i>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="nth mdl-layout-title"></span>
+      <nav class="mdl-navigation"></nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <center>
+          <br><br>
+          <h3 class="nth">Neue PIN vergeben</h3>
+          <p class="pin_code" id="pinStatus">
+            &nbsp;
+          </p>
+          <div class="pin_container" id="pinContainer">
+            <div class="button" onclick="addNumber(1);">1</div>
+            <div class="button" onclick="addNumber(2);">2</div>
+            <div class="button" onclick="addNumber(3);">3</div>
+            <br>
+            <div class="button" onclick="addNumber(4);">4</div>
+            <div class="button" onclick="addNumber(5);">5</div>
+            <div class="button" onclick="addNumber(6);">6</div>
+            <br>
+            <div class="button" onclick="addNumber(7);">7</div>
+            <div class="button" onclick="addNumber(8);">8</div>
+            <div class="button" onclick="addNumber(9);">9</div>
+            <br>
+            <div class="button" onclick="addNumber(0);">0</div>
+          </div>
+          <br><br>
+          <button onclick="clear_pin();" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Löschen
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button onclick="save_pin();" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Pin Speichern
+          </button>
+          <script src="./src/js/change_pin.js"></script>
+          <script>
+            localStorage.setItem("com.crackyOS.notes_function-new-pin", "true");
+          </script>
+          <br>
+          <br>
+        </center>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

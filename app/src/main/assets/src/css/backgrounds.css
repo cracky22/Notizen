@@ -1,0 +1,57 @@
+body {
+  height: 100px;
+  width: 200px;
+}
+
+button.backgrounds {
+  height: 250px;
+  width: 140px;
+  margin-right: 5px;
+  margin-top: 8px;
+}
+
+.default {
+  padding: 10px 20px;
+  background-image: linear-gradient(
+    130deg,
+    rgb(63, 81, 181),
+    rgb(132, 168, 250),
+    rgba(219, 238, 176, 0.699),
+    rgba(179, 255, 0, 0.712)
+  );
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.white {
+  padding: 10px 20px;
+  background-color: white;
+  border: none;
+  color: rgb(3, 3, 3);
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.blue {
+  padding: 10px 20px;
+  background-color: #313f8e;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.gray {
+  padding: 10px 20px;
+  background-color: #373737;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./src/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/css/line.css">
+  <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+  <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+  <script src="./src/js/backgroundEngine.js"></script>
+  <script src="./src/js/debug-commands.js"></script>
+  <script src="./src/js/cloudWatchDog.js"></script>
+  <script src="./src/mdl/mdl-script.js"></script>
+  <script src="./src/js/url_action.js"></script>
+  <script src="./src/js/analytics.js"></script>
+  <script src="./src/js/autoSync.js"></script>
+  <script src="./src/js/actions.js"></script>
+  <script src="./src/js/logout.js"></script>
+  <script src="./src/js/check.js"></script>
+</head>
+
+<body onload="check_if_auth_is_valid();" onclick="userIsOn('notes.html:clickEvent');">
+  <script>
+    let currentPage = "./notes.html";
+    userIsOn(currentPage);
+  </script>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="nth mdl-layout-title">
+          Notizen
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation" onclick="logout();">
+          &nbsp;&nbsp;Abmelden&nbsp;
+          <button onclick="logout();" id="demo-menu-lower-right" 
+          class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">
+              logout
+            </i>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="nth mdl-layout-title">
+        Menü
+      </span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="./cloudKit.html">
+          Cloud
+        </a>
+        <a class="mdl-navigation__link" href="./backup_restore.html">
+          backup / restore
+        </a>
+        <a class="mdl-navigation__link" href="./settings.html">
+          Einstellungen
+        </a>
+        <a class="mdl-navigation__link" href="./change_pin.html">
+          Pin ändern
+        </a>
+        <a class="mdl-navigation__link" onclick="logout();">
+          Abmelden
+        </a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <div class="popup-box">
+          <div class="popup">
+            <div class="content">
+              <header>
+                <p></p>
+                <i class="uil uil-times"></i>
+              </header>
+              <form action="#">
+                <div class="row title">
+                  <label>
+                    Titel
+                  </label>
+                  <input type="text" spellcheck="false">
+                </div>
+                <div class="row description">
+                  <label>
+                    Notiz
+                  </label>
+                  <textarea spellcheck="false"></textarea>
+                </div>
+                <button></button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+          <li class="add-box" style="background-color: rgb(117, 131, 169);">
+            <p class="header">
+              <button onclick="settings();" class="btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                <i class="material-icons">
+                  settings
+                </i>
+              </button>
+              <button onclick="add();" class="btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                <i class="material-icons">
+                  add
+                </i>
+              </button>
+              <button onclick="cloud();" class="btn mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+                <i class="material-icons">
+                  backup
+                </i>
+              </button>
+            </p>
+          </li>
+        </div>
+      </div>
+      <br><br><br>
+      <script src="./src/js/notes.js"></script>
+      <script>
+        function save_auto_login() {
+          var checkbox = document.getElementById("auto-login");
+          localStorage.setItem("com.crackyOS.notes_auto-login", checkbox.checked);
+        }
+
+        function load_menu() {
+          let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-login"));
+          document.getElementById("auto-login").checked = checked;
+        }
+
+        let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-login"));
+        document.getElementById("auto-login").checked = checked;
+      </script>
+  </div>
+  </main>
+  </div>
+</body>
+
+</html>

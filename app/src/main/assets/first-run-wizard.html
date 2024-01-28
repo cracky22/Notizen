@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+  <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+  <link rel="stylesheet" href="./src/css/login.css">
+  <script src="./src/js/login_pin-reminder.js"></script>
+  <script src="./src/js/debug-commands.js"></script>
+  <script src="./src/mdl/mdl-script.js"></script>
+  <script src="./src/js/url_action.js"></script>
+  <script src="./src/js/analytics.js"></script>
+  <script src="./src/js/first-run.js"></script>
+</head>
+
+<body onload="first_run_wizard_startup();">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="nth mdl-layout-title">
+          Notizen Einrichten
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only"></nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="nth mdl-layout-title">
+        Menü
+      </span>
+      <nav class="mdl-navigation">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button style="height: 200px; border: none; background: none;" 
+        onclick="debug_init();"></button>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <center>
+          <div class="nth popup" id="popup">
+            <h4 class="nth">Willkommen in <br>Notizen</h4>
+            <p>
+              Nachdem du einen Pin-Code für die App festgelegt hast, kannst du sie direkt entsperren. 
+              Im Menü gibt es die Optionen eine neue Notiz zu erstellen, sie zu bearbeiten oder diese zu löschen. 
+              Auch kannst du in den Einstellungen festlegen ob du angemeldet bleiben willst, oder jedes mal nach deinem Pin-Code gefragt werden soll. 
+              Zur Datensicherheit gibt es ebenfalls in den Einstellungen die Möglichkeit ein Backup deiner Notizen anzulegen.
+            </p>
+            <button onclick="hide('popup');userIsOn('first-run-wizard.html:startAsNewUser');"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Start als neuer Nutzer
+            </button><br><br>
+            <button onclick="start_cloud();"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Nutzte Notizen bereits
+            </button>
+            <br><br><br><br><br>
+          </div>
+
+          <div class="popup2" id="popup2">
+            <h4 class="nth">Aus Cloud wiederherstellen</h4>
+            <p>
+              Da du bereits nutzer von Notizen bist, kannst du hier deinen CloudKey eingeben, um deine Daten wiederherzustellen<br><br>
+              <input id="cloudKeyInput" placeholder="CloudKey">
+              <script id="restoreScript"></script>
+            </p>
+            <button onclick="setup_with_cloudKey();"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Wiederherstellen
+            </button><br><br>
+            <button onclick="hide('popup2');userIsOn('first-run-wizard.html:skipRestore');"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Überspringen
+            </button>
+            <br><br><br><br><br>
+          </div>
+
+          <div class="popup2" id="popup3">
+            <h4 class="nth"><u>Wiederherstellung<br>der Daten</u></h4>
+            <p>
+              <br><br>
+              <pic style="font-size: 80px;">&#9989;</pic><br><br><br>
+              Deine Daten wurden erfolgreich wieder-<br>hergestellt. Um Notizen nutzen zu können,<br>musst du jetzt noch deinen PIN-Code<br>einrichten<br>
+            </p><br>
+            <button onclick="hide('popup3');userIsOn('first-run-wizard.html:pinSetup');"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Weiter mit PIN
+            </button>
+            <br><br><br><br><br>
+          </div>
+
+
+          <div class="popup2" id="error">
+            <h4 class="nth"><u>Wiederherstellung<br>der Daten</u></h4>
+            <p>
+              <br><br>
+              <pic style="font-size: 80px;">&#10060;</pic><br><br><br>
+              Leider ist beim wiederherstellen der Daten<br>etwas schiefgelaufen. Kein Grund zur Sorge,<br>du kannst dies in den Cloud-Einstellungen nachholen. Richte dafür zuerst den PIN-<br>Code für die App ein.
+            </p><br>
+            <button onclick="hide('popup3');hide('error');"
+             class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Weiter mit PIN
+            </button>
+            <br><br><br><br><br>
+          </div>
+          
+          <script>
+            userIsOn('startup com.crackyOS.notizen');
+            function first_run_wizard_startup() {
+              userIsOn('first-run-wizard.html:startup');
+              if (localStorage.getItem("com.crackyOS.notes_firstrun-restoreCloud") === "true") {
+                if (localStorage.getItem("com.crackyOS.notes_FRW-restore_complete") !== "true") {
+                  setup_with_cloudKey();
+                } else {
+                  show('popup3');
+                  if (localStorage.getItem("com.crackyOS.notes_data") === null) {
+                    show('error');
+                  } else if (localStorage.getItem("com.crackyOS.notes_data") === "ée") {
+                    show('error');
+                  } else if (localStorage.getItem("com.crackyOS.notes_data") === "bnVsbA==") {
+                    show('error');
+                  } else if (localStorage.getItem("com.crackyOS.notes_data") === "null") {
+                    show('error');
+                  } else if (localStorage.getItem("com.crackyOS.notes_data") === "") {
+                    show('error');
+                  }
+                }
+              } else {
+                show('popup');
+                hide('popup2');
+              }
+            }
+
+            function start_cloud() {
+              userIsOn('first-run-wizard.html:start_cloud');
+              hide('popup');
+              show('popup2');
+            }
+
+            function setup_with_cloudKey() {
+              userIsOn('first-run-wizard.html:setup_with_cloudKey');
+              hide('popup2');
+              localStorage.setItem("com.crackyOS.notes_firstrun-restoreCloud", "true");
+              start_restore();
+            }
+
+
+            function start_restore() {
+              const inputField = document.getElementById('cloudKeyInput');
+              const userCloudKey = inputField.value;
+              localStorage.setItem("com.crackyOS.notes_cloud-key", userCloudKey);
+              restore_from_cloud();
+            }
+
+
+            function restore_from_cloud() {
+              userIsOn('first-run-wizard.html:restore_from_cloud');
+              let cloudKey = localStorage.getItem("com.crackyOS.notes_cloud-key");
+              let script = document.getElementById('restoreScript');
+              script.src = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/cloudKit/restore.php?cloudKey=' + encodeURIComponent(cloudKey);
+              let enc_notes = localStorage.getItem("enc_notes");
+              let dec_notes = atob(enc_notes);
+
+              setTimeout(function() {
+                let enc_notes = localStorage.getItem("enc_notes");
+                let dec_notes = atob(enc_notes);
+                localStorage.setItem("com.crackyOS.notes_data", dec_notes);
+
+                localStorage.removeItem("enc_notes");
+                show('popup3');
+                localStorage.setItem("com.crackyOS.notes_FRW-restore_complete", "true");
+                userIsOn('first-run-wizard.html:restore_complete');
+              }, 1200);
+            }
+
+            $ = function (id) {
+              return document.getElementById(id);
+            }
+
+            var show = function (id) {
+              $(id).style.display = 'block';
+            }
+            var hide = function (id) {
+              $(id).style.display = 'none';
+            }
+          </script>
+          <br><br>
+          <h3 class="nth">Pin Erstellen</h3>
+          <p class="pin_code" id="pinStatus">
+            &nbsp;
+          </p>
+          <div class="pin_container" id="pinContainer">
+            <div class="button" onclick="addNumber(1)">1</div>
+            <div class="button" onclick="addNumber(2)">2</div>
+            <div class="button" onclick="addNumber(3)">3</div>
+            <br>
+            <div class="button" onclick="addNumber(4)">4</div>
+            <div class="button" onclick="addNumber(5)">5</div>
+            <div class="button" onclick="addNumber(6)">6</div>
+            <br>
+            <div class="button" onclick="addNumber(7)">7</div>
+            <div class="button" onclick="addNumber(8)">8</div>
+            <div class="button" onclick="addNumber(9)">9</div>
+            <br>
+            <div class="button" onclick="addNumber(0)">0</div>
+          </div>
+          <br><br>
+          <button onclick="clear_pin()" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Löschen
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button onclick="save_pin()" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Pin Speichern
+          </button>
+          <br>
+          <br>
+        </center>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

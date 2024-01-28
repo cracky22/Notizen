@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/settings.css">
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/settings.js"></script>
+    <script src="./src/js/actions.js"></script>
+    <script src="./src/js/check.js"></script>
+    
+    <!--backgrounds.css hier lassen, last exec!-->
+    <link rel="stylesheet" href="./src/css/backgrounds.css">
+</head>
+
+<body>
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./design.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="nth mdl-layout-title">
+                    Design&nbsp;&emsp;&emsp;
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button onclick="window.location.href='./settings.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            settings
+                        </i>
+                    </button>
+                    <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            home
+                        </i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="nth mdl-layout-title">
+                Menü
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="./notes.html">
+                    zurück
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <center>
+                    <br><br>
+                    <button onclick="set_background_default();"
+                    class="backgrounds default mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        Standard
+                    </button>
+
+                    <button onclick="set_background_white();"
+                    class="backgrounds mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect white">
+                        Weiß
+                    </button>
+
+                    <button onclick="set_background_blue();"
+                    class="backgrounds mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect blue">
+                        Blau
+                    </button>
+
+                    <button onclick="set_background_gray();"
+                    class="backgrounds mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect gray">
+                        Grau
+                    </button>
+                    <br><br><br>
+
+                    <!--Darkmode-->
+                    <!--<div>
+                        <button onclick="save_darkmode();" 
+                        class="auto-login">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="darkmode">
+                                <input type="checkbox" id="darkmode" class="mdl-checkbox__input" checkbox>
+                                <span class="mdl-checkbox__label">
+                                    Darkmode&nbsp;&nbsp;&nbsp;
+                                </span>
+                            </label>
+                        </button>
+                    </div>-->
+                    <br><br><br>
+
+                    <script>
+                        /*function save_darkmode() {
+                            let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_darkmode"));
+                            document.getElementById("darkmode").checked = checked;
+                            localStorage.removeItem("com.crackyOS.notes_background");
+                        }
+
+                        let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_darkmode"));
+                        document.getElementById("darkmode").checked = checked;*/
+                    </script>
+                </center>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

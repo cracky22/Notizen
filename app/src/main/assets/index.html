@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <script src="./src/js/login_pin-reminder.js"></script>
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+</head>
+
+<body>
+  <script>
+    let currentPage = "./index.html";
+    userIsOn(currentPage);
+  </script>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">
+            Notizen - Login
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation mdl-layout--large-screen-only"></nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">
+        Menü
+      </span>
+      <nav class="mdl-navigation">
+        
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <script>
+          /*session active, user logged in*/
+          if (localStorage.getItem("com.crackyOS.notes_user-login.token") === "984dec8c-7f96-43bd-9179-c3521ba5ea13") {
+            if (localStorage.getItem("com.crackyOS.notes_auto-login") === "true") {
+              if (localStorage.getItem("com.crackyOS.notes_logins") != localStorage.getItem("com.crackyOS.notes_remeber-after")) {
+                if (localStorage.getItem("com.crackyOS.notes_pinRemember") === "randomized") {
+                  let logins = parseInt(localStorage.getItem('com.crackyOS.notes_logins'));
+                  logins += 1;
+                  localStorage.setItem('com.crackyOS.notes_logins', logins);
+                }
+              } else if (localStorage.getItem("com.crackyOS.notes_logins") == localStorage.getItem("com.crackyOS.notes_remeber-after")) {
+                localStorage.setItem("com.crackyOS.notes_user-login.token", 0);
+                set_random_pinRemember_char();
+                window.location.href = './auth.html';
+              }
+              window.location.href = './notes.html';
+            } else if (localStorage.getItem("com.crackyOS.notes_function-new-pin") === "true") {
+              window.location.href = './require_newPin.html';
+            } else {
+              window.location.href = './auth.html';
+            }
+
+          /*session inactive, user logged out*/
+          } else if (localStorage.getItem("com.crackyOS.notes_wrong-logins") === "2") {
+              window.location.href = './blocked_pin.html';
+          } else if (localStorage.getItem("com.crackyOS.notes_function-new-pin") === "true") {
+              window.location.href = './require_newPin.html';
+          } else if (localStorage.getItem("com.crackyOS.notes_user-login.token") === "0") {
+              window.location.href = './auth.html';
+          } else {
+            window.location.href = './first-run-wizard.html';
+          }
+
+          if (localStorage.getItem("com.crackyOS.notes_remember-after") == localStorage.getItem("com.crackyOS.notes_logins")) {
+            localStorage.setItem("com.crackyOS.notes_user-login.token", 0);
+            set_random_pinRemember_char();
+            if (localStorage.getItem("com.crackyOS.notes_analytics") === "true") {
+              let analytics_data = btoa(localStorage.getItem("com.crackyOS.notes_analytics-data"));
+              localStorage.setItem("com.crackyOS.notes_analytics-data", "[]");
+              localStorage.setItem("com.crackyOS.notes_logins", 1);
+              var url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/analytics/share.php?analyticsData=' + analytics_data;
+              window.location.href = url;
+            } else {
+              //
+            }
+          }
+        </script>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+  <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+  <link rel="stylesheet" href="./src/css/cloud.css">
+  <script src="./src/js/backgroundEngine.js"></script>
+  <script src="./src/js/debug-commands.js"></script>
+  <script src="./src/mdl/mdl-script.js"></script>
+  <script src="./src/js/url_action.js"></script>
+  <script src="./src/js/analytics.js"></script>
+  <script src="./src/js/cloud.js"></script>
+  <script src="./src/js/check.js"></script>
+</head>
+
+<body onload="start_cloudKit();">
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./cloudKit.html";
+    userIsOn(currentPage);
+  </script>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <span class="nth mdl-layout-title">
+          Notizen - <small>Cloud</small>
+        </span>
+        <div class="mdl-layout-spacer"></div>
+        <nav class="mdl-navigation">
+          <button onclick="window.location.href='./backup_restore.html';" id="demo-menu-lower-right"
+            class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">
+              restore
+            </i>
+          </button>
+          <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right"
+            class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">
+              home
+            </i>
+          </button>
+        </nav>
+      </div>
+    </header>
+    <div id="loadingBar" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+    <div class="mdl-layout__drawer">
+      <span class="nth mdl-layout-title">
+        Menü
+      </span>
+      <nav class="mdl-navigation">
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="./notes.html">
+            zurück
+          </a>
+        </nav>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+        <center>
+          <div class="nth popup" id="popup">
+            <h4 class="nth">Cloud-Key</h4>
+            <p>
+              Der Cloud-Key ist dafür zuständig, dass du im Falle eines Datenverlustes wieder an deine Daten kommst.
+            </p>
+            <h3 id="cloudKey"></h3>
+            <button onclick="close_and_copy();"
+              class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+              Kopieren & schließen
+            </button>
+            <br><br>
+            <button onclick="disableCloud();">
+              Cloud nicht nutzen
+            </button>
+            <br><br><br>
+            <script>
+              $ = function (id) {
+                return document.getElementById(id);
+              }
+
+              var show = function (id) {
+                $(id).style.display = 'block';
+              }
+              var hide = function (id) {
+                $(id).style.display = 'none';
+              }
+            </script>
+          </div>
+          <img class="cloud" src="./src/img/cloud.png">
+          <br>
+
+          <div id="spinningCircle" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+          <br><br>
+          <button onclick="save_auto_sync();" class="auto-sync">
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="auto-sync">
+              <input type="checkbox" id="auto-sync" class="mdl-checkbox__input" checkbox>
+              <span class="mdl-checkbox__label">
+                Automatisches Backup 
+              </span>
+            </label>
+          </button><br>
+          <button onclick="syncNow();" id="backupButton" 
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Backup jetzt erstellen
+          </button>
+          <br>
+          <small id="syncStatus"></small>
+          <br><br>-----------------------------------------------------------<br><br>
+          <input id="cloudKeyInput" class="cloudKeyInput" placeholder="Cloud-Key [XXXXXX]" required>
+          <br>
+          <button onclick="restore_from_cloud();" id="restoreButton" type="submit"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+            Wiederherstellen
+          </button>
+          <br>
+          <script id="restoreScript"></script>
+          <br>
+          <br><br><br>
+          <button class="reset" onclick="reset_cloud();">
+            Cloud Zurücksetzen
+          </button><br>
+          <small class="settKey" id="settKey"></small>
+          <br><br><br>
+          <script>
+            function save_auto_sync() {
+                var checkbox = document.getElementById("auto-sync");
+                localStorage.setItem("com.crackyOS.notes_auto-sync", checkbox.checked);
+            }
+
+            function load_menu() {
+                let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-sync"));
+                document.getElementById("auto-sync").checked = checked;
+            }
+
+            let checked = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-sync"));
+            document.getElementById("auto-sync").checked = checked;
+        </script>
+        </center>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

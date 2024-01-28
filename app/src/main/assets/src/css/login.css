@@ -1,0 +1,153 @@
+span.mdl-layout-title {
+  margin-top: 6px!important;
+  font-size: 28px!important;
+  font-weight: 600;
+}
+
+nav.mdl-navigation {
+  font-size: 18px!important;
+  margin-top: 6px!important;
+  font-weight: 300;
+}
+
+a.mdl-navigation__link {
+  font-size: 18px!important;
+}
+
+
+
+
+div.button {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: rgba(192, 191, 191, 0.58);
+  text-align: center;
+  line-height: 60px;
+  margin: 5px;
+  font-size: 32px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: 0.001s;
+}
+div.button:active
+/*div.button:hover*/ {
+  background-color: rgba(39, 39, 39, 0.676);
+  color: white;
+  border: 1px solid white;
+  box-shadow: 2px 2px 5px #030303;
+}
+
+p.pin_code {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  height: 600px!important;
+  top: 50%;
+  margin-top: -310px!important;
+  background: #FFF;
+  border: 3px solid #F04A49;
+  z-index: 20;
+}
+
+.popup2 {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 100%!important;
+  left: 50%;
+  margin-left: -190px;
+  height: 800px;
+  top: 50%;
+  margin-top: -325px!important;
+  background: #FFF;
+  z-index: 20;
+}
+
+#popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+#popup:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+.button {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
+p {
+	margin: 1em 0;
+  font-size: 16px;
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 510px;
+  top: 50%;
+  margin-top: -240px;
+  background: #FFF;
+  border: 3px solid #4970f0;
+  z-index: 20;
+}
+
+#popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+#popup:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+p {
+	margin: 1em 0;
+  font-size: 16px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/b-r.css">
+    <link rel="stylesheet" href="./src/css/settings.css">
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/settings.js"></script>
+    <script src="./src/js/dev-mode.js"></script>
+    <script src="./src/js/actions.js"></script>
+    <script src="./src/js/check.js"></script>
+</head>
+
+<body>
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./changelog.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="nth mdl-layout-title">
+                    Notizen - <small>News</small>
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button onclick="window.location.href='./index.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            home
+                        </i>
+                    </button>
+                    <button onclick="window.location.href='./auth.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            login
+                        </i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="nth mdl-layout-title">
+                Menü
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="./index.html">
+                    zurück
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <center>
+                    <br>
+                    <p onclick="prepare_easter_egg();"
+                    id="version" class="version_extended"></p>
+                    <h3 style="text-decoration: underline; font-size: 30px;">Was ist neu?</h3>
+                    <div class="news">
+                        <h5>
+                            <li id="1"></li><br>
+                            <li id="2"></li><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <!--<li id="3"></li><br>
+                            <li id="4"></li><br>
+                            <li id="5"></li><br>
+                            <li id="6"></li><br>
+                            <li id="7"></li><br>
+                            <li id="8"></li><br>
+                            <li id="9"></li><br>
+                            <li id="10"></li>--> 
+                        </h5>
+                    </div>
+                    <button onclick="user_read_changes();"
+                    class="okbutton mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        Okay, verstanden
+                    </button>
+                    <br><br>
+                    <p id="date"></p>
+                    <br>
+                    <script src="./src/js/version.js"></script>
+                    <script src="./src/js/changelog.js"></script>
+                    <script>
+                        if (localStorage.getItem("com.crackyOS.notes_clickForDEV") == 1) {
+                            userIsOn('changelog.html:clickForDEV=1,remove');
+                            localStorage.removeItem("com.crackyOS.notes_clickForDEV");
+                        } else if (localStorage.getItem("com.crackyOS.notes_clickForDEV") == 2) {
+                            window.location.href="./settings.html";
+                            userIsOn('changelog.html:clickForDEV=2');
+                        } else if (localStorage.getItem("com.crackyOS.notes_clickForDEV") == 3) {
+                            window.location.href="./settings.html";
+                            userIsOn('changelog.html:clickForDEV=3');
+                        } else {
+                            //
+                        }
+
+                        function prepare_easter_egg() {
+                            userIsOn('changelog.html:prepare_easter_egg');
+                            setTimeout(function() {
+                                userIsOn('changelog.html:./easter_egg.html');
+                                window.location.href='./easter_egg.html';
+                            }, 1250);
+                        }
+
+                        function user_read_changes() {
+                            userIsOn('changelog.html:user_read_changes');
+                            window.location.href="./settings.html";
+                        }
+                    </script>
+                </center>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

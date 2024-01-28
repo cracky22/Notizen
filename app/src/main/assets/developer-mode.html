@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/b-r.css">
+    <link rel="stylesheet" href="./src/css/settings.css">
+    <script src="./src/js/login_pin-reminder.js"></script>
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/dev-mode.js"></script>
+    <script src="./src/js/check.js"></script>
+</head>
+
+<body>
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./developer-mode.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="nth mdl-layout-title">
+                    Notizen - DEV
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button onclick="window.location.href='./settings.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            settings
+                        </i>
+                    </button>
+                    <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            home
+                        </i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="nth mdl-layout-title">
+                FILES
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="./admin_login.html">
+                    ./admin_login.html
+                </a>
+                <a class="mdl-navigation__link" href="./auth.html">
+                    ./auth.html
+                </a>
+                <a class="mdl-navigation__link" href="./backup_restore.html">
+                    ./backup_restore.html
+                </a>
+                <a class="mdl-navigation__link" href="./blocked_pin.html">
+                    ./blocked_pin.html
+                </a>
+                <a class="mdl-navigation__link" href="./change_pin.html">
+                    ./change_pin.html
+                </a>
+                <a class="mdl-navigation__link" href="./changelog.html">
+                    ./changelog.html
+                </a>
+                <a class="mdl-navigation__link" href="./cloudKit.html">
+                    ./cloudKit.html
+                </a>
+                <a class="mdl-navigation__link" href="./design.html">
+                    ./design.html
+                </a>
+                <a class="mdl-navigation__link" href="./easter_egg.html">
+                    ./easter_egg.html
+                </a>
+                <a class="mdl-navigation__link" href="./first-run-wizard.html">
+                    ./first-run-wizard.html
+                </a>
+                <a class="mdl-navigation__link" href="./index.html">
+                    ./index.html
+                </a>
+                <a class="mdl-navigation__link" href="./notes.html">
+                    ./notes.html
+                </a>
+                <a class="mdl-navigation__link" href="./privacy.html">
+                    ./privacy.html
+                </a>
+                <a class="mdl-navigation__link" href="./require_newPin.html">
+                    ./require_newPin.html
+                </a>
+                <a class="mdl-navigation__link" href="./reset_pin.html">
+                    ./reset_pin.html
+                </a>
+                <a class="mdl-navigation__link" href="./settings.html">
+                    ./settings.html
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <center>
+                    <br>    
+                    <style>
+                        button.mdl-button {
+                            width: 250px!important;
+                        }
+                    </style>           
+                    <button onclick="set_cloudKey();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set cl-KEY DEV
+                    </button>
+                    <br>
+                    <button onclick="rem_auth();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        rem auth-status
+                    </button>
+                    <br>
+                    <button onclick="set_an_dt();"
+                        class="nth reset btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set analytics []
+                    </button>
+                    <br>
+                    <button onclick="set_nul();"
+                        class="nth reset btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set notes-data []
+                    </button>
+                    <br>
+                    <button onclick="set_err();"
+                        class="nth reset btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set nt-data ERR
+                    </button>
+                    <br>
+                    <button onclick="set_pin();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set pin dev
+                    </button>
+                    <br>
+                    <button onclick="set_puk();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set puk dev
+                    </button>
+                    <br>
+                    <button onclick="unset_cloud();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        unset cloud
+                    </button>
+                    <br><br>
+                    <button onclick="unset_dev();"
+                        class="nth btn reset mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        unset dev status
+                    </button>
+                    <br><br>
+                    <div class="currInfo">
+                        <p style="margin-top: 10px;" id="current_pin"></p>
+                        <p id="current_puk"></p>
+                        <p id="current_cloudKey"></p>
+                    </div>
+                    <br>
+                    <br>
+                    <p id="notesKB"></p>
+                    <p id="analyticsKB"></p>
+                    <br>
+                    <p>---------- untestet Features / Functions ----------</p>
+                    <button onclick="set_darkmode();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set darkmode
+                    </button>
+                    <br>
+                    <button onclick="set_fivePINentrys();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set pin forgot 5
+                    </button>
+                    <br>
+                    <button onclick="set_tenPINentrys();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        set pin forgot 10
+                    </button>
+                    <br><br>
+                    
+                    <div class="currInfo">
+                        <button onclick="reset_logins();"
+                            class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            reset logins
+                        </button>
+                        <br>
+                        <button onclick="renew_reloginCount();"
+                            class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                            renew relogin
+                        </button>
+                        <br><br>
+                        <p id="currentLogins"></p>
+                        <p id="reloginAfter"></p>
+                    </div>
+                    <br>
+                    <p>---------------------------------------------------------------------</p>
+                    <br>
+                    <p onclick="window.location.href='./changelog.html';" 
+                    class="version" id="version"></p>
+                    <p>SHA256-Checksum:</p>
+                    <p class="checksum" id="app-checksum"></p>
+                    <script src="./src/js/dev-mode.js"></script>
+                    <script src="./src/js/version.js"></script>
+                    <script src="https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/checksum.js"></script>
+                </center>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

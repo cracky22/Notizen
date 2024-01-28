@@ -1,0 +1,138 @@
+/*@font-face {
+    font-family: nothing;
+    src: url(../fonts/Ndot-55.otf);
+}
+
+* {
+    font-family: nothing;
+}
+
+.nth {
+    font-family: nothing!important;
+}*/
+
+button.btn {
+    font-size: 17px!important;
+    margin-top: 20px;
+    height: 39px;
+    width: 210px;
+    font-size: 15px;
+    font-weight: 650;
+}
+
+button.auto-sync {
+    width: 120px!important;
+}
+
+button.reset {
+    margin-top: 15px;
+    height: 25px;
+    width: 140px;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(180, 85, 86);
+}
+
+button.reset:active, button.reset:hover {
+    transition: 0.4s;
+    margin-top: 15px;
+    height: 65px;
+    width: 240px;
+    font-size: 23px;
+    font-weight: 600;
+    border: 2px solid rgb(70, 255, 94);
+    border-radius: 25px;
+    background-color: rgb(180, 85, 86);
+    margin-bottom: 200px;
+}
+
+span.mdl-checkbox__label {  
+    vertical-align: auto;
+}
+
+button.auto-login {
+    font-size: 20px!important;
+    font-weight: 450;
+    background: none;
+    border: none;
+}
+
+p.version {
+    font-size: 18px;
+    font-weight: 500;
+    background-color: rgb(169, 206, 255);
+    width: 40%;
+    border: 1px solid rgb(35, 108, 202);
+    border-radius: 20px;
+}
+
+
+p.version_extended {
+    height: 45px;
+    width: 190px!important;
+    font-size: 22px;
+    font-weight: 550;
+    padding-top: 20px;
+    background-color: rgba(98, 245, 157, 0.735);
+    width: 40%;
+    border: 2px solid rgb(19, 71, 38);
+    border-radius: 20px;
+    filter:brightness(60%);
+    transition: 1s;
+}
+
+p.version_extended:hover {
+    margin-top: 100px;
+    margin-bottom: 300px;
+    height: 180px;
+    text-shadow: 10px 10px 5px #744e4e;
+    filter:brightness(100%);
+    width: 325px!important;
+    filter:brightness(80%);
+    font-size: 40px;
+    font-weight: 900;
+    padding-top: 160px;
+    background-color: rgba(118, 201, 250, 0.838);
+    box-shadow: 10px 10px 5px #000000;
+    width: 40%;
+    border: 6px solid rgb(16, 25, 87);
+    text-decoration: overline dotted rgb(45, 45, 124) 4px;
+    border-radius: 40px;
+    rotate: -20deg;
+    transition: 1s;
+}
+
+p.checksum {
+    font-size: 8.5px;
+    max-width: 95%;
+}
+
+
+div.currInfo {
+    width: 75%;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+
+div.news {
+    width: 250px;
+}
+
+change {
+    float: left;
+    margin-top: 10px;
+}
+
+
+button.okbutton {
+    height: 65px;
+    width: 240px;
+    font-size: 19px;
+    font-weight: 550;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 25px;
+    background-color: rgb(123, 176, 151);
+}

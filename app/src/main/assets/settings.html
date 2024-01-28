@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/b-r.css">
+    <link rel="stylesheet" href="./src/css/settings.css">
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/settings.js"></script>
+    <script src="./src/js/dev-mode.js"></script>
+    <script src="./src/js/actions.js"></script>
+    <script src="./src/js/check.js"></script>
+</head>
+
+<body>
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./settings.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="nth mdl-layout-title">
+                    Notizen - <small><small>Einstell.</small></small>
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            home
+                        </i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="nth mdl-layout-title">
+                Menü
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="./notes.html">
+                    zurück
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <center>
+                    <br><br>
+                    <p id="notesKB"></p>
+                    <p id="analyticsKB"></p>
+                    <button onclick="design();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        Design
+                    </button>
+                    <br>
+                    <button onclick="cloud();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        CloudKit
+                    </button>
+                    <br>
+                    <button onclick="backup_restore();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        backup / restore
+                    </button>
+                    <br>
+                    <button onclick="change_pin();"
+                        class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        Pin ändern
+                    </button>
+                    <br><br>
+                    <button onclick="save_auto_login();" 
+                        class="auto-login">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="auto-login">
+                            <input type="checkbox" id="auto-login" class="mdl-checkbox__input" checkbox>
+                            <span class="mdl-checkbox__label">
+                                Auto-Login&nbsp;&nbsp;
+                            </span>
+                        </label>
+                    </button>
+                    <br><br>
+                    <button onclick="save_use_cloud();" 
+                    class="auto-login">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="use_cloud">
+                            <input type="checkbox" id="use_cloud" class="mdl-checkbox__input" checkbox disabled>
+                            <span class="mdl-checkbox__label">
+                                Nutze Cloud
+                            </span>
+                        </label>
+                    </button>
+                    <br><br>
+                    <button onclick="save_auto_sync();" 
+                    class="auto-login">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="auto-sync">
+                            <input type="checkbox" id="auto-sync" class="mdl-checkbox__input" checkbox>
+                            <span class="mdl-checkbox__label">
+                                Auto-Sync&nbsp;&nbsp;&nbsp;
+                            </span>
+                        </label>
+                    </button>
+                    <br><br>
+                    <button onclick="submit_analytics();"
+                        class="">
+                        Analyse teilen & löschen
+                    </button>
+                    <br>
+                    <button onclick="app_reset();"
+                        class="reset">
+                        App-Reset
+                    </button>
+                    <br><br>
+                    <p id="version" class="version" onclick="get_dev_status();"></p>
+                    <a style="text-decoration: none;" href="./privacy.html">Datenschutz</a><br>
+                    <script>
+                        function save_auto_login() {
+                            var checkbox = document.getElementById("auto-login");
+                            localStorage.setItem("com.crackyOS.notes_auto-login", checkbox.checked);
+                            userIsOn(currentPage + ':save_auto_login(' + localStorage.getItem("com.crackyOS.notes_auto-login") + ')');
+                        }
+
+                        function save_use_cloud() {
+                            var checkbox = document.getElementById("use_cloud");
+                            localStorage.setItem("com.crackyOS.notes_useCloud", checkbox.checked);
+                            userIsOn(currentPage + ':save_use_cloud(' + localStorage.getItem("com.crackyOS.notes_useCloud") + ')');
+                        }
+
+                        function save_auto_sync() {
+                            var checkbox = document.getElementById("auto-sync");
+                            localStorage.setItem("com.crackyOS.notes_auto-sync", checkbox.checked);
+                            userIsOn(currentPage + ':save_auto_sync(' + localStorage.getItem("com.crackyOS.notes_auto-sync") + ')');
+                        }
+
+
+                        let checked_al = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-login"));
+                        document.getElementById("auto-login").checked = checked_al;
+                        let checked_uc = JSON.parse(localStorage.getItem("com.crackyOS.notes_useCloud"));
+                        document.getElementById("use_cloud").checked = checked_uc;
+                        let checked_as = JSON.parse(localStorage.getItem("com.crackyOS.notes_auto-sync"));
+                        document.getElementById("auto-sync").checked = checked_as;
+
+
+                        var analyticsDataValue = localStorage.getItem('com.crackyOS.notes_data');
+                        var notesDataValue = localStorage.getItem('com.crackyOS.notes_analytics-data');
+                        var sizeInBytes1 = new TextEncoder().encode(analyticsDataValue).length;
+                        var sizeInBytes2 = new TextEncoder().encode(notesDataValue).length;
+                        var sizeInKilobytes1 = sizeInBytes1 / 1024;
+                        var sizeInKilobytes2 = sizeInBytes2 / 1024;
+                        document.getElementById('notesKB').textContent = 'Notiz-Daten: ' + sizeInKilobytes1.toFixed(2) + ' KB';
+                        document.getElementById('analyticsKB').textContent = 'Analysedaten: ' + sizeInKilobytes2.toFixed(2) + ' KB';
+
+
+                        userIsOn(currentPage + ':getVar(auto-login, (' + localStorage.getItem("com.crackyOS.notes_auto-login") + '))');
+                        userIsOn(currentPage + ':getVar(use_cloud, (' + localStorage.getItem("com.crackyOS.notes_useCloud") + '))');
+                        userIsOn(currentPage + ':getVar(auto-sync, (' + localStorage.getItem("com.crackyOS.notes_auto-sync") + '))');
+                        
+                        if (localStorage.getItem("com.crackyOS.notes_useCloud") === null) {
+                            var checkbox = document.getElementById('auto-sync');
+                            checkbox.disabled = true
+                        } else if (localStorage.getItem("com.crackyOS.notes_useCloud") === "false") {
+                            var checkbox = document.getElementById('auto-sync');
+                            checkbox.disabled = true
+                        }
+
+
+                        function submit_analytics() {
+                            userIsOn(currentPage + ':submit_analytics(manually)');
+                            if (localStorage.getItem("com.crackyOS.notes_analytics") === "true") {
+                                let analytics_data = btoa(localStorage.getItem("com.crackyOS.notes_analytics-data"));
+                                localStorage.setItem("com.crackyOS.notes_analytics-data", "[]");
+                                localStorage.setItem("com.crackyOS.notes_logins", 1);
+                                var url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/analytics/share.php?analyticsData=' + analytics_data;
+                                window.location.href = url;
+                            } else {
+                                //
+                            }
+                        }
+                    </script>
+                    <script src="./src/js/version.js"></script>
+                </center>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

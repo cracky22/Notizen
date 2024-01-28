@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/b-r.css">
+    <link rel="stylesheet" href="./src/css/settings.css">
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/settings.js"></script>
+    <script src="./src/js/dev-mode.js"></script>
+    <script src="./src/js/actions.js"></script>
+    <script src="./src/js/check.js"></script>
+    
+</head>
+
+<style>
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 18px;
+    }
+    p {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+
+    .button {
+        font-size: 1em;
+        padding: 5px;
+        color: #065ad8;
+        border-radius: 20px/50px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+    }
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .popup {
+        margin: 270px auto;
+        height: 40px!important;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        width: 30%;
+        position: relative;
+        transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+    .popup .close:hover {
+        color: #d80618;
+    }
+    .popup .content {
+        max-height: 100%;
+        overflow: auto;
+    }
+
+    @media screen and (max-width: 700px){
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }
+    }
+</style>
+
+<body>
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./privacy.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="nth mdl-layout-title">
+                    Datenschutz
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation">
+                    <button onclick="window.location.href='./settings.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            settings
+                        </i>
+                    </button>
+                    &nbsp;
+                    <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            home
+                        </i>
+                    </button>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="nth mdl-layout-title">
+                Menü
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="./settings.html">
+                    zurück
+                </a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <center>
+                    <br>
+                    <h1>Datenschutzerklärung für Notizen</h1>
+                    <pre>com.crackyOS.notes</pre><br>
+                        <p>Wir legen großen Wert auf den Schutz deiner persönlichen Daten und möchten dir daher transparent mitteilen, wie wir mit Informationen umgehen, die du in unserer Notizen-App speicherst. Bitte lies die folgenden Abschnitte sorgfältig durch, um zu verstehen, wie deine Daten behandelt werden.</p>
+
+                        <h2>1. Verwendung von Daten<br>1.1 Personenbezogene Daten</h2>
+                        <p>Unsere Notizen-App sammelt keine persönlichen Informationen über dich. Wir führen keine Analysen von personenbezogenen Daten durch. Deine privaten Inhalte, wie Notizen, bleiben privat und werden nicht von uns analysiert.</p>
+
+                        <h3>1.2 Metadatenanalyse</h3>
+                        <p>Wir verwenden ausschließlich Metadatenanalyse, um dir ein verbessertes Nutzungserlebnis zu ermöglichen. Diese Analyse betrifft Informationen wie Datum, Uhrzeit und Dauer der Nutzung, aber keine persönlichen Inhalte. Die Metadatenanalyse dient der Verbesserung der App-Funktionalität und wird anonymisiert durchgeführt.</p>
+
+                        <h2>2. Deaktivierung der Analyse</h2>
+                        <p>Du hast die volle Kontrolle über die Analysefunktion unserer App. Wenn du keine Metadatenanalyse wünschst, kannst du diese Funktion in den Einstellungen deaktivieren. Dies gewährleistet, dass keinerlei Daten außerhalb deiner individuellen Nutzung geteilt werden. Die Daten kommen bei aktiver Analyse nur zu den Entwicklern und werde nicht an dritte weitergegeben.</p>
+
+                        <div class="box">
+                            <a class="button" href="#popup1">Erweiterte Optionen</a>
+                        </div>
+                        
+                        <div id="popup1" class="overlay">
+                            <div class="popup">
+                                <a class="close" href="#">&times;</a>
+                                <div class="content">
+                                    <button onclick="save_analytics();" class="auto-login">
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="analytics">
+                                            <input type="checkbox" id="analytics" class="mdl-checkbox__input" checkbox>
+                                            <span class="mdl-checkbox__label">
+                                                Analysedaten teilen&nbsp;&nbsp;
+                                            </span>
+                                        </label>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button onclick="submit_analytics();"
+                            class="nth btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                                Daten senden
+                            </button>
+                        </div>
+                        
+
+
+                        <!--<button onclick="save_analytics();" class="auto-login">
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="analytics">
+                                <input type="checkbox" id="analytics" class="mdl-checkbox__input" checkbox>
+                                <span class="mdl-checkbox__label">
+                                    Analysedaten teilen&nbsp;&nbsp;
+                                </span>
+                            </label>
+                        </button>
+                        <br><br>-->
+
+                        <h2>3. Cloud-Speicher und Sicherheit</h2>
+
+                        <h3>3.1 Datenformat</h3>
+                        <p>Deine Notizen werden im Base64-codierten Format in der Cloud gespeichert. Dieses Format gewährleistet eine effiziente und sichere Speicherung deiner Daten.</p>
+
+                        <h3>3.2 Sicherheit und Redundanz</h3>
+                        <p>Wir sichern deine Daten auf unserer Seite mit höchster Priorität. Unsere Cloud-Infrastruktur implementiert standard Sicherheitsmaßnahmen, um den Schutz und die Verfügbarkeit deiner Informationen sicherzustellen. Redundanzmechanismen sind integriert, um Datenverluste zu minimieren.</p>
+
+                        <h2>4. Verantwortung des Nutzers</h2>
+                        <p>Die Freigabe deiner Daten liegt in deiner eigenen Verantwortung. Bitte sei vorsichtig bei der Entscheidung, deine Notizen zu teilen oder auf anderen Geräten zu synchronisieren. Wir übernehmen keine Verantwortung für die Freigabe von Informationen durch den Nutzer.</p>
+
+                        <h2>5. Kontakt</h2>
+                        <p>Für Fragen oder Anliegen bezüglich des Datenschutzes in unserer Notizen-App stehen wir dir gerne zur Verfügung. Kontaktiere uns unter cracky2208@gmail.com</p>
+
+                        <p>Vielen Dank, dass du unsere Datenschutzerklärung gelesen hast. Wir schätzen dein Vertrauen in unsere Notizen-App.</p>
+
+                        <footer>
+                            <p>Notizen | cracky> by Martin Blieninger</p>
+                            <p>&copy; 2024 cracky></p>
+                        </footer>
+                    <br><br>
+                    
+                    
+                    <script>
+                        function save_analytics() {
+                            var checkbox = document.getElementById("analytics");
+                            localStorage.setItem("com.crackyOS.notes_analytics", checkbox.checked);
+                            userIsOn(currentPage + ':save_analytics(' + localStorage.getItem("com.crackyOS.notes_analytics") + ')');
+                        }
+
+                        let checked_an = JSON.parse(localStorage.getItem("com.crackyOS.notes_analytics"));
+                        document.getElementById("analytics").checked = checked_an;
+
+                        function submit_analytics() {
+                            userIsOn(currentPage + ':submit_analytics(manually)');
+                            if (localStorage.getItem("com.crackyOS.notes_analytics") === "true") {
+                                let analytics_data = btoa(localStorage.getItem("com.crackyOS.notes_analytics-data"));
+                                localStorage.setItem("com.crackyOS.notes_analytics-data", "[]");
+                                localStorage.setItem("com.crackyOS.notes_logins", 1);
+                                var url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/analytics/share.php?analyticsData=' + analytics_data;
+                                window.location.href = url;
+                            } else {
+                                //
+                            }
+                        }
+                    </script>
+                </center>
+                <br>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

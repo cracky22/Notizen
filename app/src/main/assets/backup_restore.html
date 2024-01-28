@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de-De">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/mdl/googleAPI-style.css">
+    <link rel="stylesheet" href="./src/mdl/mdl-style.css">
+    <link rel="stylesheet" href="./src/css/b-r.css">
+    <script src="./src/js/backgroundEngine.js"></script>
+    <script src="./src/js/backup_restore.js"></script>
+    <script src="./src/js/debug-commands.js"></script>
+    <script src="./src/mdl/mdl-script.js"></script>
+    <script src="./src/js/url_action.js"></script>
+    <script src="./src/js/analytics.js"></script>
+    <script src="./src/js/check.js"></script>
+</head>
+
+<body onload="backup();">
+  <script>
+    check_if_auth_is_valid();
+    let currentPage = "./backup_restore.html";
+    userIsOn(currentPage);
+  </script>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+          <div class="mdl-layout__header-row">
+            <span class="nth mdl-layout-title">
+                Notizen - <small><small>B/R</small></small>
+            </span>
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+              <button onclick="window.location.href='./cloudKit.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">
+                  backup
+                </i>
+              </button>
+              &nbsp;
+              <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons">
+                  home
+                </i>
+              </button>
+            </nav>
+          </div>
+        </header>
+        <div class="mdl-layout__drawer">
+          <span class="nth mdl-layout-title">
+            Menü
+          </span>
+          <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="./notes.html">
+                zurück
+            </a>
+          </nav>
+        </div>
+        <main class="mdl-layout__content">
+          <div class="page-content">
+            <center>
+                <h3 class="nth">backup</h3>
+                <div style="margin-left: 20px; margin-right: 20px;" id="notes-container"></div>
+                
+                <button onclick="copy();" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                    Kopieren
+                </button>
+
+                <br><br>
+                --------------------------------------------------------
+                <br><br>
+
+                <h3 class="nth">restore</h3>
+                <form id="notes-form">
+                    <textarea class="nth" style="height: 175px; width: 255px; font-size: 20px;" 
+                    type="text" id="notes-input" placeholder="paste backup"></textarea>
+                    <br><br>
+                    <button onclick="restore();" type="submit" class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        Restore
+                    </button>
+                </form>
+                <br><br><br>
+            </center>
+            <br>
+          </div>
+        </main>
+    </div>
+</body>
+</html>

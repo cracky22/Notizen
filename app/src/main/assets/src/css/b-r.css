@@ -1,0 +1,19 @@
+span.mdl-layout-title {
+    margin-top: 6px!important;
+    font-size: 28px!important;
+    font-weight: 600;
+  }
+  
+  nav.mdl-navigation {
+    font-size: 18px!important;
+    margin-top: 6px!important;
+    font-weight: 300;
+  }
+  
+  a.mdl-navigation__link {
+    font-size: 18px!important;
+  }
+
+button.reset {
+  background-color: rgb(197, 82, 82);
+}

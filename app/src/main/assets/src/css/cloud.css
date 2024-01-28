@@ -1,0 +1,120 @@
+img.cloud {
+    width: 260px!important;
+    animation: zoomInOut 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes zoomInOut {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.2);
+    }
+  }
+
+button.reset {
+  background-color: rgb(180, 85, 86);
+}
+
+input.cloudKeyInput {
+    width: 175px!important;
+}
+
+span.mdl-layout-title {
+  margin-top: 6px!important;
+  font-size: 28px!important;
+  font-weight: 600;
+}
+  
+nav.mdl-navigation {
+  font-size: 18px!important;
+  margin-top: 6px!important;
+  font-weight: 300;
+}
+
+a.mdl-navigation__link {
+  font-size: 18px!important;
+}
+
+div.button {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: rgba(192, 191, 191, 0.58);
+  text-align: center;
+  line-height: 60px;
+  margin: 5px;
+  font-size: 32px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: 0.08s;
+}
+div.button:active {
+  background-color: rgba(39, 39, 39, 0.676);
+  color: white;
+  box-shadow: 2px 2px 5px #030303;
+}
+
+p.pin_code {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+
+.popup {
+  display: none;
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 360px;
+  top: 50%;
+  margin-top: -210px;
+  background: #FFF;
+  color: black!important;
+  border: 3px solid #4970f0;
+  z-index: 20;
+}
+
+#popup:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+#popup:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+p {
+  margin: 1em 0;
+  font-size: 16px;
+}
+
+div.mdl-progress {
+  width: 100%;
+  height: 4px;
+}
+div.mdl-spinner {
+  height: 40px;
+  width: 40px;
+}
+
+small.settKey {
+  font-size: 14px;
+}
