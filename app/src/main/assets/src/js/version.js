@@ -1,7 +1,7 @@
 let major = 2;
 let minor = 9;
-let subVS = 8;
-let date = "Update vom 2024-01-23 21:58  Uhr";
+let subVS = 9;
+let date = "Update vom 2024-01-31 22:57 Uhr";
 
 vsText = "Version: " + major + "." + minor + "." + subVS;
 

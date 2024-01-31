@@ -81,12 +81,21 @@
             <p>
               <br><br>
               <pic style="font-size: 80px;">&#9989;</pic><br><br><br>
-              Deine Daten wurden erfolgreich wieder-<br>hergestellt. Um Notizen nutzen zu können,<br>musst du jetzt noch deinen PIN-Code<br>einrichten<br>
+              <p id="notesKB"></p><br>Deine Daten wurden erfolgreich wieder-<br>hergestellt. Um Notizen nutzen zu können,<br>musst du jetzt noch deinen PIN-Code<br>einrichten<br>
             </p><br>
             <button onclick="hide('popup3');userIsOn('first-run-wizard.html:pinSetup');"
              class="nth mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
               Weiter mit PIN
             </button>
+            <script>
+              function show_restoredData() {
+                var analyticsDataValue = localStorage.getItem('com.crackyOS.notes_data');
+                var sizeInBytes1 = new TextEncoder().encode(analyticsDataValue).length;
+                var sizeInKilobytes1 = sizeInBytes1 / 1024;
+                document.getElementById('notesKB').textContent = 'Daten wiederhergestellt: ' + sizeInKilobytes1.toFixed(2) + ' KB';
+                userIsOn('first-run-wizard.html:restoredData[' + sizeInKilobytes1.toFixed(2) + 'KB]');
+              }
+            </script>
             <br><br><br><br><br>
           </div>
 
@@ -113,6 +122,7 @@
                 if (localStorage.getItem("com.crackyOS.notes_FRW-restore_complete") !== "true") {
                   setup_with_cloudKey();
                 } else {
+                  show_restoredData();
                   show('popup3');
                   if (localStorage.getItem("com.crackyOS.notes_data") === null) {
                     show('error');
@@ -168,6 +178,7 @@
                 localStorage.setItem("com.crackyOS.notes_data", dec_notes);
 
                 localStorage.removeItem("enc_notes");
+                show_restoredData();
                 show('popup3');
                 localStorage.setItem("com.crackyOS.notes_FRW-restore_complete", "true");
                 userIsOn('first-run-wizard.html:restore_complete');

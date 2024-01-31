@@ -66,18 +66,6 @@ function set_background_gray() {
 }
 
 
-setTimeout(function() {
-    userIsOn('backgroundEngine.js:20000');
-}, 20000);
-
-setTimeout(function() {
-    userIsOn('backgroundEngine.js:40000');
-}, 40000);
-
-setTimeout(function() {
-    userIsOn('backgroundEngine.js:60000');
-}, 60000);
-
-setTimeout(function() {
-    userIsOn('backgroundEngine.js:80000');
-}, 80000);
+var cron = document.createElement('script');
+cron.src = './src/js/cron.js';
+document.head.appendChild(cron);

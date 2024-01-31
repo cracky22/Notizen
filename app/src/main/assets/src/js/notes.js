@@ -6,6 +6,16 @@ titleTag = popupBox.querySelector("input"),
 descTag = popupBox.querySelector("textarea"),
 addBtn = popupBox.querySelector("button");
 
+var allData = Object.keys(localStorage);
+var allData_kb = new TextEncoder().encode(allData).length / 1024;
+userIsOn('notes.js:storageUsage[' + allData_kb.toFixed(2) + 'KB]');
+
+var notesData = localStorage.getItem("com.crackyOS.notes_data")
+var notesData_inBytes = new TextEncoder().encode(notesData).length;
+var notesData_kb = notesData_inBytes / 1024;
+userIsOn('notes.js:noteStorage[' + notesData_kb.toFixed(2) + 'KB]');
+
+
 const months = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli",
               "August", "September", "Oktober", "November", "Dezember"];
 const notes = JSON.parse(localStorage.getItem("com.crackyOS.notes_data") || "[]");

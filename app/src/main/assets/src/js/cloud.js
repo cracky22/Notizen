@@ -104,10 +104,18 @@ function stop_lanim() {
 function syncNow() {
   userIsOn('cloud.js:syncNow');
   start_lanim();
-
   let cloudKey = localStorage.getItem("com.crackyOS.notes_cloud-key");
   let notes = localStorage.getItem("com.crackyOS.notes_data");
+  var analyticsDataValue = notes
+  var notesData_inBytes = new TextEncoder().encode(analyticsDataValue).length;
+  var notesData_kb = notesData_inBytes / 1024;
+  userIsOn('cloud.js:getData[' + notesData_kb.toFixed(2) + 'KB]');
   var enc_notes = btoa(notes);
+  var enc_notesData = enc_notes
+  var enc_notesData_inBytes = new TextEncoder().encode(enc_notesData).length;
+  var enc_notesData_kb = enc_notesData_inBytes / 1024;
+  userIsOn('cloud.js:enc_notes[' + enc_notesData_kb.toFixed(2) + 'KB]');
+  
 
   document.body.style.backgroundImage = "";
   document.body.style.backgroundColor = '#4aed75';
@@ -126,7 +134,7 @@ function syncNow() {
     userIsOn('cloud.js:syncing...');
     window.location.href = url;
   }, 800);
-}f
+}
 
 function restore_from_cloud() {
   userIsOn('cloud.js:restore_from_cloud');
@@ -140,6 +148,7 @@ function restore_from_cloud() {
     userIsOn('cloud.js:input-key_!=_key');
     localStorage.setItem("com.crackyOS.notes_cloud-key", userCloudKey);
   }
+  
   
   let script = document.getElementById('restoreScript');
   script.src = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/cloudKit/restore.php?cloudKey=' + encodeURIComponent(userCloudKey);

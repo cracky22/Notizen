@@ -149,12 +149,24 @@
 
                         var analyticsDataValue = localStorage.getItem('com.crackyOS.notes_data');
                         var notesDataValue = localStorage.getItem('com.crackyOS.notes_analytics-data');
-                        var sizeInBytes1 = new TextEncoder().encode(analyticsDataValue).length;
-                        var sizeInBytes2 = new TextEncoder().encode(notesDataValue).length;
-                        var sizeInKilobytes1 = sizeInBytes1 / 1024;
-                        var sizeInKilobytes2 = sizeInBytes2 / 1024;
-                        document.getElementById('notesKB').textContent = 'Notiz-Daten: ' + sizeInKilobytes1.toFixed(2) + ' KB';
-                        document.getElementById('analyticsKB').textContent = 'Analysedaten: ' + sizeInKilobytes2.toFixed(2) + ' KB';
+                        
+                        startInterval();
+                        function startInterval() {
+                            var timer = setInterval(function () {
+                                getStorage();
+                            }, 1000);
+                        }
+
+                        function getStorage() {
+                            var sizeInBytes1 = new TextEncoder().encode(analyticsDataValue).length;
+                            var sizeInBytes2 = new TextEncoder().encode(notesDataValue).length;
+                            var sizeInKilobytes1 = sizeInBytes1 / 1024;
+                            var sizeInKilobytes2 = sizeInBytes2 / 1024;
+
+                            document.getElementById('notesKB').textContent = 'Notiz-Daten: ' + sizeInKilobytes1.toFixed(2) + ' KB';
+                            document.getElementById('analyticsKB').textContent = 'Analysedaten: ' + sizeInKilobytes2.toFixed(2) + ' KB';
+                            val++;
+                        }
 
 
                         userIsOn(currentPage + ':getVar(auto-login, (' + localStorage.getItem("com.crackyOS.notes_auto-login") + '))');
