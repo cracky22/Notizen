@@ -1,5 +1,5 @@
-let change_number_1 = "benutzer Speicher wird korrekt angezeigt";
-let change_number_2 = "Daten zu Speichergrößen sowie Berechnungszeit werden erfasst";
+let change_number_1 = "Feedbackmöglichkeit in den Einstellungen (Sprechblase mit !, neben Haus)";
+let change_number_2 = "Kleinere Fehlerkorrekturen wurden vorgenommen";
 let change_number_3 = "";
 let change_number_4 = "";
 let change_number_5 = "";

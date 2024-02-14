@@ -24,6 +24,10 @@ button.auto-sync {
     width: 120px!important;
 }
 
+button._reset {
+    background-color: rgb(180, 85, 86);
+}
+
 button.reset {
     margin-top: 15px;
     height: 25px;

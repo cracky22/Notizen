@@ -29,10 +29,26 @@
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
                 <span class="nth mdl-layout-title">
-                    Notizen - <small><small>Einstell.</small></small>
+                    Einstellungen
                 </span>
                 <div class="mdl-layout-spacer"></div>
                 <nav class="mdl-navigation">
+                    <script>
+                        function give_feedback() {
+                            localStorage.setItem("com.crackyOS.notes_analytics", "true");
+                            let _reloginAfter = localStorage.getItem("com.crackyOS.notes_remember-after");
+                            let reloginStat = _reloginAfter - 1;
+                            localStorage.setItem("com.crackyOS.notes_logins", reloginStat);
+                            userIsOn(currentPage + ':give_feedback()');
+                            let feedback_url = "https://cracky.ddns.net/feedback/";
+                            window.location.href = feedback_url;
+                        }
+                    </script>
+                    <button onclick="give_feedback();" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">
+                            feedback
+                        </i>
+                    </button>
                     <button onclick="window.location.href='./notes.html';" id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
                         <i class="material-icons">
                             home
@@ -109,7 +125,7 @@
                     <br><br>
                     <button onclick="submit_analytics();"
                         class="">
-                        Analyse teilen & löschen
+                        Analysedaten löschen
                     </button>
                     <br>
                     <button onclick="app_reset();"
@@ -149,14 +165,8 @@
 
                         var analyticsDataValue = localStorage.getItem('com.crackyOS.notes_data');
                         var notesDataValue = localStorage.getItem('com.crackyOS.notes_analytics-data');
-                        
-                        startInterval();
-                        function startInterval() {
-                            var timer = setInterval(function () {
-                                getStorage();
-                            }, 1000);
-                        }
 
+                        getStorage();
                         function getStorage() {
                             var sizeInBytes1 = new TextEncoder().encode(analyticsDataValue).length;
                             var sizeInBytes2 = new TextEncoder().encode(notesDataValue).length;
@@ -165,7 +175,8 @@
 
                             document.getElementById('notesKB').textContent = 'Notiz-Daten: ' + sizeInKilobytes1.toFixed(2) + ' KB';
                             document.getElementById('analyticsKB').textContent = 'Analysedaten: ' + sizeInKilobytes2.toFixed(2) + ' KB';
-                            val++;
+
+                            userIsOn(currentPage + ":getStorage[notes_data_in_kb(" + sizeInKilobytes1.toFixed(2) + ") || analytics_data_in_kb(" + sizeInKilobytes2.toFixed(2) + ")]");
                         }
 
 
@@ -191,7 +202,8 @@
                                 var url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/analytics/share.php?analyticsData=' + analytics_data;
                                 window.location.href = url;
                             } else {
-                                //
+                                localStorage.setItem("com.crackyOS.notes_analytics-data", "[]");
+                                document.getElementById('analyticsKB').textContent = 'Analysedaten: 0 KB';
                             }
                         }
                     </script>

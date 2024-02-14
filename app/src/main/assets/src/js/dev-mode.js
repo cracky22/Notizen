@@ -146,3 +146,4 @@ var sizeInKilobytes2 = sizeInBytes2 / 1024;
 
 document.getElementById('notesKB').textContent = 'Notiz-Daten: ' + sizeInKilobytes1.toFixed(2) + ' KB';
 document.getElementById('analyticsKB').textContent = 'Analysedaten: ' + sizeInKilobytes2.toFixed(2) + ' KB';
+userIsOn(currentPage + ":getStorage[notes_data_in_kb(" + sizeInKilobytes1.toFixed(2) + ") || analytics_data_in_kb(" + sizeInKilobytes2.toFixed(2) + ")]");
