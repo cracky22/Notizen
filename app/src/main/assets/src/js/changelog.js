@@ -1,4 +1,4 @@
-let change_number_1 = "Feedbackmöglichkeit in den Einstellungen (Sprechblase mit !, neben Haus)";
+let change_number_1 = "Die Benutzeroberfläche der Cloud-Schnittstelle wurde überarbeitet";
 let change_number_2 = "Kleinere Fehlerkorrekturen wurden vorgenommen";
 let change_number_3 = "";
 let change_number_4 = "";

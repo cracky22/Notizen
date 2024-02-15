@@ -47,6 +47,13 @@ function disableCloud() {
   keyInput.disabled = true
   var restoreButton = document.getElementById('restoreButton');
   restoreButton.disabled = true
+  var animation = document.getElementById('animation');
+  animation.classList.remove("animation");
+  let autosync_checkbox = document.getElementById('auto-sync');
+  autosync_checkbox.disabled = true
+  let autosync_button = document.getElementById('autosync-button');
+  autosync_button.disabled = true
+  animation.classList.add("disabled");
   document.body.style.backgroundColor = '#e86a5a';
   hide("popup");
 }

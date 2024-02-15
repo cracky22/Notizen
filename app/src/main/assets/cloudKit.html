@@ -89,12 +89,12 @@
               }
             </script>
           </div>
-          <img class="cloud" src="./src/img/cloud.png">
+          <img class="cloud animation" id="animation" src="./src/img/cloud.png">
           <br>
 
           <div id="spinningCircle" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
           <br><br>
-          <button onclick="save_auto_sync();" class="auto-sync">
+          <button onclick="save_auto_sync();" id="autosync-button" class="auto-sync">
             <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="auto-sync">
               <input type="checkbox" id="auto-sync" class="mdl-checkbox__input" checkbox>
               <span class="mdl-checkbox__label">
@@ -122,7 +122,7 @@
           <button class="reset" onclick="reset_cloud();">
             Cloud Zurücksetzen
           </button><br>
-          <small class="settKey" id="settKey"></small>
+          <small class="settKey" id="settKey" disabled></small>
           <br><br><br>
           <script>
             function save_auto_sync() {

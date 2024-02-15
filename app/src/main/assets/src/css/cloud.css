@@ -1,6 +1,13 @@
 img.cloud {
     width: 260px!important;
-    animation: zoomInOut 2.8s ease-in-out infinite alternate;
+}
+
+img.animation {
+  animation: zoomInOut 2.8s ease-in-out infinite alternate;
+}
+
+img.disabled {
+  filter: grayscale(100%) invert(100%);
 }
 
 @keyframes zoomInOut {
