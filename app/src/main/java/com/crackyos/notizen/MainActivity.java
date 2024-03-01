@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setAllowFileAccess(true);
         webSettings.setSupportMultipleWindows(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+        webSettings.setCacheMode(50 * 1024 * 1024);
         webView.setWebViewClient(new Callback());
         webView.loadUrl("file:///android_asset/index.html");
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
