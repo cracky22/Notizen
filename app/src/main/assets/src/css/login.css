@@ -34,10 +34,10 @@ div.button {
 }
 div.button:active
 /*div.button:hover*/ {
-  background-color: rgba(39, 39, 39, 0.676);
+  background-color: rgba(0, 0, 0, 0.847);
   color: white;
-  border: 1px solid white;
-  box-shadow: 2px 2px 5px #030303;
+  border: 1px solid black;
+  box-shadow: 3px 3px 5px #030303;
 }
 
 p.pin_code {

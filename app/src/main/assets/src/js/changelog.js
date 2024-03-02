@@ -1,4 +1,4 @@
-let change_number_1 = "Das Cache-Management wurde von 5 MB auf 50 MB erhöht";
+let change_number_1 = "Fehler bei Pin-Code Eingabe wurde behoben";
 let change_number_2 = "Kleinere Fehlerkorrekturen wurden vorgenommen";
 let change_number_3 = "";
 let change_number_4 = "";

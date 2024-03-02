@@ -1,28 +1,30 @@
+let frameworkName = "backgroundEngine.js";
+
 document.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem("com.crackyOS.notes_background") === "default") {
-        userIsOn('backgroundEngine.js:default');
+        userIsOn(frameworkName + ':default');
         document.body.style.backgroundImage = "linear-gradient(130deg, rgb(63, 81, 181), rgb(132, 168, 250), rgba(219, 238, 176, 0.699), rgba(179, 255, 0, 0.712))";
 
 
     } else if (localStorage.getItem("com.crackyOS.notes_background") === "white") {
-        userIsOn('backgroundEngine.js:white');
+        userIsOn(frameworkName + ':white');
         document.body.style.backgroundColor = "white";
 
 
     } else if (localStorage.getItem("com.crackyOS.notes_background") === "blue") {
-        userIsOn('backgroundEngine.js:blue');
+        userIsOn(frameworkName + ':blue');
         document.body.style.backgroundColor = "#313f8e";
         document.body.style.color = "white";
 
 
     } else if (localStorage.getItem("com.crackyOS.notes_background") === "gray") {
-        userIsOn('backgroundEngine.js:gray');
+        userIsOn(frameworkName + ':gray');
         document.body.style.backgroundColor = "#373737";
         document.body.style.color = "white";
         
 
     } else if (localStorage.getItem("com.crackyOS.notes_darkmode") === "true") {
-        userIsOn('backgroundEngine.js:darkmode');
+        userIsOn(frameworkName + ':darkmode');
         document.body.style.backgroundColor = "black";
         document.body.style.color = "white";
     }
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 function set_background_default() {
+    userIsOn(frameworkName + ":set_background_default()");
     localStorage.setItem("com.crackyOS.notes_background", "default");
     localStorage.setItem("com.crackyOS.notes_darkmode", "false");
     userIsOn('design.html:default');
@@ -39,6 +42,7 @@ function set_background_default() {
 }
 
 function set_background_white() {
+    userIsOn(frameworkName + ":set_background_white()");
     localStorage.setItem("com.crackyOS.notes_background", "white");
     localStorage.setItem("com.crackyOS.notes_darkmode", "false");
     userIsOn('design.html:white');
@@ -48,6 +52,7 @@ function set_background_white() {
 }
 
 function set_background_blue() {
+    userIsOn(frameworkName + ":set_background_blue()");
     localStorage.setItem("com.crackyOS.notes_background", "blue");
     localStorage.setItem("com.crackyOS.notes_darkmode", "false");
     userIsOn('design.html:blue');
@@ -57,6 +62,7 @@ function set_background_blue() {
 }
 
 function set_background_gray() {
+    userIsOn(frameworkName + ":set_background_gray()");
     localStorage.setItem("com.crackyOS.notes_background", "gray");
     localStorage.setItem("com.crackyOS.notes_darkmode", "false");
     userIsOn('design.html:gray');

@@ -324,9 +324,14 @@ form button{
 
 @media (max-width: 660px){
   .wrapper{
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.297), 0 6px 20px 0 rgba(0, 0, 0, 0.301);
+    border-radius: 30px;
     margin: 15px;
     gap: 15px;
     grid-template-columns: repeat(auto-fill, 100%);
+  }
+  .wrapper:hover, .wrapper:active {
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.297);
   }
   .popup-box .popup{
     max-width: calc(100% - 15px);
