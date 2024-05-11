@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Converter</title>
+  <style>
+    textarea {
+      width: 900px;
+      height: 450px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+
+    <textarea id="base64Input" placeholder="Gib hier Base64-Text ein..."></textarea>
+    <br><br>
+    <button onclick="convert()">Convert</button>
+
+  </center>
+
+  <script>
+    function convert() {
+      var base64Input = document.getElementById('base64Input');
+      var inputValue = base64Input.value.trim();
+
+      if (inputValue !== '') {
+        try {
+          // Entferne alle nicht Base64-konformen Zeichen
+          inputValue = inputValue.replace(/[^A-Za-z0-9+/=]/g, '');
+
+          var decodedText = atob(inputValue);
+
+          // Check if the decoded text is too large
+          if (decodedText.length > (2 ** 16 - 1)) {
+            alert('Die dekodierte Textlänge ist zu groß.');
+            return;
+          }
+
+          var blob = new Blob([decodedText], { type: 'text/plain' });
+          var reader = new FileReader();
+
+          reader.onload = function () {
+            base64Input.value = reader.result;
+          };
+
+          reader.readAsText(blob);
+        } catch (error) {
+          alert('Fehler beim Decodieren des Base64-Textes. Möglicherweise ist der eingegebene Text kein gültiger Base64-String.');
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>
