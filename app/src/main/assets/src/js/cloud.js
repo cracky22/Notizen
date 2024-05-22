@@ -22,9 +22,9 @@ function reset_cloud() {
   localStorage.removeItem("com.crackyOS.notes_cloud-key");
   start_lanim();
   document.getElementById("settKey").textContent = "resetting cloudconfig...";
-  setTimeout(function () {
+  setTimeout(() => {
     localStorage.removeItem("com.crackyOS.notes_useCloud");
-    var url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/cloudKit/backup.php?cloudKey=' + cloudKey + '&enc_notes=' + "W10="; 
+    let url = 'https://cracky.ddns.net/services/apps/crackyOS/application/com.crackyOS.notes/cloudKit/backup.php?cloudKey=' + cloudKey + '&enc_notes=' + "W10="; 
     window.location.href = url;
   }, 1500);
 }
@@ -39,15 +39,15 @@ function disableCloud() {
   localStorage.setItem("com.crackyOS.notes_lastSynced", "Cloud nicht eingerichtet");
   localStorage.setItem("com.crackyOS.notes_auto-sync", "false");
   localStorage.setItem("com.crackyOS.notes_useCloud", "false");
-  var autoSync = document.getElementById('auto-sync');
+  let autoSync = document.getElementById('auto-sync');
   autoSync.disabled = true
-  var backupButton = document.getElementById('backupButton');
+  let backupButton = document.getElementById('backupButton');
   backupButton.disabled = true
-  var keyInput = document.getElementById('cloudKeyInput');
+  let keyInput = document.getElementById('cloudKeyInput');
   keyInput.disabled = true
-  var restoreButton = document.getElementById('restoreButton');
+  let restoreButton = document.getElementById('restoreButton');
   restoreButton.disabled = true
-  var animation = document.getElementById('animation');
+  let animation = document.getElementById('animation');
   animation.classList.remove("animation");
   let autosync_checkbox = document.getElementById('auto-sync');
   autosync_checkbox.disabled = true
@@ -91,7 +91,7 @@ function close_and_copy() {
   localStorage.setItem("com.crackyOS.notes_lastSynced", "Noch nicht Synchronisiert");
   syncNow();
 
-  setTimeout(function() {
+  setTimeout(() => {
     location.reload();
   }, 150);
 }

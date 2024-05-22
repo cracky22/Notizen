@@ -15,7 +15,7 @@ function settings() {
 
 function app_reset() {
     localStorage.clear();
-    setTimeout(function() {
+    setTimeout(() => {
         window.location.href='./first-run-wizard.html';
     }, 0.850);
 }

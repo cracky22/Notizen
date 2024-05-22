@@ -14,7 +14,7 @@ function clearPin() {
 
 if (localStorage.getItem("com.crackyOS.notes_wrong-admin-logins") === "2") {
   document.getElementById('pinStatus').textContent = '3 Falsche Versuche, App RESET!!';
-  setTimeout(function() {
+  setTimeout(() => {
     localStorage.clear();
     window.location.href="./index.html";
   }, 2200);
@@ -24,7 +24,7 @@ function submitPin() {
   if (enteredPin === correctPin) {
     document.getElementById('pinStatus').textContent = 'ADMIN:[allow]';
     userIsOn('admin-login.js:admin_allow');
-    setTimeout(function() {
+    setTimeout(() => {
       localStorage.setItem("com.crackyOS.notes_user-login.token", "984dec8c-7f96-43bd-9179-c3521ba5ea13");
       localStorage.removeItem("com.crackyOS.notes_wrong-admin-logins");
       if (localStorage.getItem("com.crackyOS.notes_wrong-logins") === "3") {
